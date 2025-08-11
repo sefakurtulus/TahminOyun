@@ -1,0 +1,67 @@
+<!-- public/index.html dosyasının tamamını bununla değiştirin -->
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayı Bulmaca Oyunu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <h1>Sayı Bulmaca Oyunu</h1>
+        <h2 id="game-status">Sunucuya bağlanılıyor...</h2>
+
+        <!-- Ana Ekran -->
+        <div id="home-screen">
+            <button id="create-room-btn">Oda Kur</button>
+            <button id="join-room-btn">Odaya Katıl</button>
+        </div>
+
+        <!-- Oda Kurma Bekleme Ekranı -->
+        <div id="create-room-screen" class="hidden">
+            <p>Arkadaşının katılması için aşağıdaki kodu paylaş:</p>
+            <div id="room-id-display"></div>
+            <p class="waiting-text">Rakip bekleniyor...</p>
+        </div>
+
+        <!-- Odaya Katılma Ekranı -->
+        <div id="join-room-screen" class="hidden">
+            <p>Arkadaşından aldığın oda kodunu gir:</p>
+            <input type="text" id="room-id-input" maxlength="6" placeholder="Oda Kodu">
+            <button id="submit-join-btn">Katıl</button>
+        </div>
+
+        <!-- Sayı Belirleme Ekranı -->
+        <div id="setup-screen" class="hidden">
+            <p>Rakamları farklı, 4 basamaklı bir sayı girin ve başlayın:</p>
+            <input type="text" id="secret-number-input" maxlength="4" placeholder="Örn: 1453">
+            <button id="set-number-btn">Sayıyı Belirle</button>
+        </div>
+
+        <!-- Ana Oyun Ekranı -->
+        <div id="game-screen" class="hidden">
+            <div id="guess-area">
+                <input type="text" id="guess-input" maxlength="4" placeholder="Tahmininiz">
+                <button id="guess-btn">Tahmin Et</button>
+            </div>
+            <div id="history-area">
+                <div class="history-list">
+                    <h3>Tahminlerim</h3>
+                    <ul id="my-guesses"></ul>
+                </div>
+                <div class="history-list">
+                    <h3>Rakibin Tahminleri</h3>
+                    <ul id="opponent-guesses"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+
+</html>
