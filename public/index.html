@@ -1,4 +1,3 @@
-<!-- public/index.html dosyasının tamamını bununla değiştirin -->
 <!DOCTYPE html>
 <html lang="tr">
 
@@ -6,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sayı Bulmaca Oyunu</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -16,15 +15,37 @@
 
         <!-- Ana Ekran -->
         <div id="home-screen">
-            <button id="create-room-btn">Oda Kur</button>
+            <button id="create-room-btn">Oda Kur (Multiplayer)</button>
             <button id="join-room-btn">Odaya Katıl</button>
+
+            <!-- YENİ BOT ALANI -->
+            <div id="bot-game-options">
+                <p>🤖 Bota Karşı Oyna</p>
+                <select id="bot-difficulty-select">
+                    <option value="easy">Kolay</option>
+                    <option value="normal" selected>Normal</option>
+                    <option value="hard">Zor</option>
+                </select>
+                <button id="start-bot-game-btn">Başla</button>
+            </div>
         </div>
 
-        <!-- Oda Kurma Bekleme Ekranı -->
+        <!-- Oda Kurma / Hane Seçim Ekranı -->
         <div id="create-room-screen" class="hidden">
-            <p>Arkadaşının katılması için aşağıdaki kodu paylaş:</p>
-            <div id="room-id-display"></div>
-            <p class="waiting-text">Rakip bekleniyor...</p>
+            <div id="digit-selection-container">
+                <p>Oyun kaç haneli olsun?</p>
+                <div class="digit-options">
+                    <button class="digit-btn" data-digits="3">3</button>
+                    <button class="digit-btn" data-digits="4">4</button>
+                    <button class="digit-btn" data-digits="5">5</button>
+                    <button class="digit-btn" data-digits="6">6</button>
+                </div>
+            </div>
+            <div id="waiting-for-player-container" class="hidden">
+                <p>Arkadaşının katılması için aşağıdaki kodu paylaş:</p>
+                <div id="room-id-display"></div>
+                <p class="waiting-text">Rakip bekleniyor...</p>
+            </div>
         </div>
 
         <!-- Odaya Katılma Ekranı -->
@@ -58,11 +79,21 @@
                 </div>
             </div>
         </div>
+
+        <!-- Oyun Sonu Sayı Bilgisi Alanı -->
+        <div id="end-game-info" class="hidden">
+            <!-- Burası JavaScript ile doldurulacak -->
+        </div>
+
+        <!-- Ana Menüye Dön Butonu (Oyun sonu için) -->
+        <div id="end-screen" class="hidden">
+            <button id="back-to-menu-btn">Ana Menüye Dön</button>
+        </div>
+
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="client.js"></script>
 </body>
-
 
 </html>
