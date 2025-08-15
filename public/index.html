@@ -4,96 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sayı Bulmaca Oyunu</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Tahmin Oyunları Portalı</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-    <div id="game-container">
-        <h1>Sayı Bulmaca Oyunu</h1>
-        <h2 id="game-status">Sunucuya bağlanılıyor...</h2>
-
-        <!-- Ana Ekran -->
-        <div id="home-screen">
-            <button id="create-room-btn">Oda Kur (Multiplayer)</button>
-            <button id="join-room-btn">Odaya Katıl</button>
-
-            <!-- YENİ BOT ALANI -->
-            <div id="bot-game-options">
-                <p>🤖 Bota Karşı Oyna</p>
-                <select id="bot-difficulty-select">
-                    <option value="easy">Kolay</option>
-                    <option value="normal" selected>Normal</option>
-                    <option value="hard">Zor</option>
-                </select>
-                <button id="start-bot-game-btn">Başla</button>
-            </div>
+    <div class="portal-container">
+        <h1>Tahmin Oyunları</h1>
+        <div class="game-selection">
+            <a href="/kelime" class="game-card">
+                <h2>Kelime Tahmin Oyunu</h2>
+                <p>Arkadaşınla kelimeleri tahmin et!</p>
+            </a>
+            <a href="/sayi" class="game-card">
+                <h2>Sayı Tahmin Oyunu</h2>
+                <p>Sayısal mantığını konuştur!</p>
+            </a>
         </div>
-
-        <!-- Oda Kurma / Hane Seçim Ekranı -->
-        <div id="create-room-screen" class="hidden">
-            <div id="digit-selection-container">
-                <p>Oyun kaç haneli olsun?</p>
-                <div class="digit-options">
-                    <button class="digit-btn" data-digits="3">3</button>
-                    <button class="digit-btn" data-digits="4">4</button>
-                    <button class="digit-btn" data-digits="5">5</button>
-                    <button class="digit-btn" data-digits="6">6</button>
-                </div>
-            </div>
-            <div id="waiting-for-player-container" class="hidden">
-                <p>Arkadaşının katılması için aşağıdaki kodu paylaş:</p>
-                <div id="room-id-display"></div>
-                <p class="waiting-text">Rakip bekleniyor...</p>
-            </div>
-        </div>
-
-        <!-- Odaya Katılma Ekranı -->
-        <div id="join-room-screen" class="hidden">
-            <p>Arkadaşından aldığın oda kodunu gir:</p>
-            <input type="text" id="room-id-input" maxlength="6" placeholder="Oda Kodu">
-            <button id="submit-join-btn">Katıl</button>
-        </div>
-
-        <!-- Sayı Belirleme Ekranı -->
-        <div id="setup-screen" class="hidden">
-            <p>Rakamları farklı, 4 basamaklı bir sayı girin ve başlayın:</p>
-            <input type="text" id="secret-number-input" maxlength="4" placeholder="Örn: 1453">
-            <button id="set-number-btn">Sayıyı Belirle</button>
-        </div>
-
-        <!-- Ana Oyun Ekranı -->
-        <div id="game-screen" class="hidden">
-            <div id="guess-area">
-                <input type="text" id="guess-input" maxlength="4" placeholder="Tahmininiz">
-                <button id="guess-btn">Tahmin Et</button>
-            </div>
-            <div id="history-area">
-                <div class="history-list">
-                    <h3>Tahminlerim</h3>
-                    <ul id="my-guesses"></ul>
-                </div>
-                <div class="history-list">
-                    <h3>Rakibin Tahminleri</h3>
-                    <ul id="opponent-guesses"></ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Oyun Sonu Sayı Bilgisi Alanı -->
-        <div id="end-game-info" class="hidden">
-            <!-- Burası JavaScript ile doldurulacak -->
-        </div>
-
-        <!-- Ana Menüye Dön Butonu (Oyun sonu için) -->
-        <div id="end-screen" class="hidden">
-            <button id="back-to-menu-btn">Ana Menüye Dön</button>
-        </div>
-
     </div>
-
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="client.js"></script>
 </body>
 
 </html>

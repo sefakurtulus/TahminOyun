@@ -1,290 +1,63 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
+    background-color: #e9ecef;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /* Mobil cihazlarda kaydırma için min-height kullanmak daha iyidir */
     margin: 0;
-    padding: 10px 0;
-    /* Sayfanın üst ve altında boşluk */
-}
-
-#game-container {
-    background-color: white;
-    padding: 20px 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 600px;
-    transition: all 0.3s ease-in-out;
-    /* Boyut değişimlerini yumuşatır */
-}
-
-h1,
-h2 {
-    color: #333;
-}
-
-h2#game-status {
-    min-height: 24px;
-    color: #555;
-    font-style: italic;
-}
-
-input[type="text"] {
-    padding: 10px;
-    font-size: 1.2em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    text-align: center;
-    letter-spacing: 0.2em;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 1em;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    margin-left: 10px;
-    transition: background-color 0.2s;
-}
-
-button:disabled {
-    background-color: #aaa;
-    cursor: not-allowed;
-}
-
-button:hover:not(:disabled) {
-    background-color: #0056b3;
-}
-
-.hidden {
-    display: none !important;
-    /* Her zaman gizli olmasını garantiler */
-}
-
-#history-area {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.history-list {
-    width: 45%;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-    height: 200px;
-    overflow-y: auto;
-    border: 1px solid #eee;
-    background-color: #fafafa;
-}
-
-li {
-    padding: 8px;
-    border-bottom: 1px solid #eee;
-}
-
-li:nth-child(odd) {
-    background-color: #f9f9f9;
-}
-
-.result {
-    font-weight: bold;
-    margin-left: 15px;
-}
-
-.plus {
-    color: #28a745;
-}
-
-.minus {
-    color: #ffc107;
-}
-
-#home-screen,
-#join-room-screen,
-#create-room-screen {
-    margin-top: 20px;
     padding: 20px;
-    border-top: 1px solid #eee;
+    box-sizing: border-box;
 }
 
-#home-screen button {
-    font-size: 1.2em;
-    padding: 15px 30px;
-    margin: 0 10px;
+.portal-container {
+    text-align: center;
+    color: #343a40;
 }
 
-
-/* Bot Oyun Seçenekleri Alanı */
-
-#bot-game-options {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
 }
 
-#bot-game-options p {
+.game-selection {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    /* Küçük ekranlarda alt alta geçmesini sağlar */
+    justify-content: center;
+}
+
+.game-card {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 250px;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.game-card h2 {
     margin-top: 0;
-    font-weight: bold;
-}
-
-#bot-difficulty-select {
-    padding: 8px;
-    font-size: 1em;
-    border-radius: 4px;
-    margin-right: 10px;
-}
-
-#start-bot-game-btn {
-    background-color: #28a745;
-}
-
-#start-bot-game-btn:hover {
-    background-color: #1e7e34;
-}
-
-
-/* Rakam Seçim Butonları İçin Stil */
-
-.digit-options {
-    margin-bottom: 20px;
-}
-
-.digit-btn {
-    font-size: 1.1em;
-    padding: 10px 25px;
-    margin: 5px;
-    background-color: #6c757d;
-}
-
-.digit-btn:hover {
-    background-color: #5a6268;
-}
-
-#room-id-display {
-    font-size: 2em;
-    font-weight: bold;
     color: #007bff;
-    background-color: #f0f2f5;
-    padding: 10px 20px;
-    border-radius: 4px;
-    letter-spacing: 0.2em;
-    margin: 10px 0;
-    display: inline-block;
-    border: 1px dashed #ccc;
-    word-break: break-all;
-    /* Uzun kodların taşmasını engeller */
-}
-
-.waiting-text {
-    font-style: italic;
-    color: #666;
-}
-
-#end-game-info {
-    margin: 20px auto;
-    padding: 15px;
-    background-color: #e9f5ff;
-    border: 1px solid #b3d7ff;
-    border-radius: 8px;
-    color: #004085;
-    max-width: 90%;
-}
-
-#end-game-info span {
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
-    letter-spacing: 2px;
-    background-color: #fff;
-    padding: 2px 6px;
-    border-radius: 4px;
 }
 
 
-/******************************************/
+/* Mobil Cihazlar için Medya Sorgusu */
 
-
-/********** MOBİL UYUMLULUK (Responsive) **********/
-
-
-/******************************************/
-
-
-/* Ekran genişliği 768px veya daha az olduğunda bu stiller uygulanır */
-
-@media (max-width: 768px) {
-    #game-container {
-        width: 95%;
-        /* Konteyner genişliğini esnek yap */
-        padding: 20px 15px;
-        /* Yan boşlukları azalt */
-        margin-top: 20px;
-    }
+@media (max-width: 600px) {
     h1 {
-        font-size: 1.8em;
-        /* Başlık fontunu küçült */
+        font-size: 2em;
     }
-    /* Ana menüdeki butonları alt alta getir */
-    #home-screen button {
-        display: block;
-        width: 90%;
-        margin: 10px auto;
-        /* Butonlar arasına dikey boşluk ekle ve ortala */
-    }
-    /* Bot seçenekleri alanını dikey yap */
-    #bot-game-options {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        /* Elemanlar arasına boşluk koy */
-    }
-    /* Tahmin geçmişi listelerini alt alta getir */
-    #history-area {
-        flex-direction: column;
-        align-items: center;
-    }
-    .history-list {
+    .game-card {
         width: 100%;
-        /* Listeleri tam genişlik yap */
-        margin-bottom: 20px;
-    }
-    /* Sayı ve tahmin girme alanlarını dikey yap */
-    #setup-screen,
-    #join-room-screen {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    #guess-area {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        /* Input ve buton arasına boşluk koy */
-    }
-    #setup-screen input,
-    #join-room-screen input,
-    #guess-area input {
-        width: 80%;
-        margin-left: 0;
-    }
-    #setup-screen button,
-    #join-room-screen button,
-    #guess-area button {
-        width: 60%;
-        margin-left: 0;
+        /* Kartların tam genişlik kaplamasını sağlar */
     }
 }

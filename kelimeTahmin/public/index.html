@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelime Bulmaca Oyunu</title>
+    <link rel="stylesheet" href="/kelime/style.css">
+</head>
+
+<body>
+    <a href="/" id="back-to-portal-btn" class="global-home-btn">🏠 Portal</a>
+
+    <div id="game-container">
+        <h1>Kelime Bulmaca Oyunu</h1>
+        <h2 id="game-status">Sunucuya bağlanılıyor...</h2>
+
+        <!-- Ana Ekran -->
+        <div id="home-screen">
+            <!-- Multiplayer Alanı -->
+            <div class="game-mode-box">
+                <p>👥 Arkadaşınla Oyna</p>
+                <div class="word-length-picker">
+                    <label for="word-length-select">Harf Sayısı:</label>
+                    <select id="word-length-select">
+                        <option value="2-3">2-3 Harfli</option>
+                        <option value="4">4 Harf</option>
+                        <option value="5" selected>5 Harf</option>
+                        <option value="6">6 Harf</option>
+                        <option value="7">7 Harf</option>
+                    </select>
+                </div>
+                <button id="create-room-btn">Oda Kur</button>
+                <button id="join-room-btn">Odaya Katıl</button>
+            </div>
+
+            <!-- Bota Karşı Oyna Alanı -->
+            <div id="bot-game-options" class="game-mode-box">
+                <p>🤖 Bota Karşı Oyna</p>
+                <!-- YENİ: Bota karşı oynamak için de harf sayısı seçimi eklendi -->
+                <div class="word-length-picker">
+                    <label for="bot-word-length-select">Harf Sayısı:</label>
+                    <select id="bot-word-length-select">
+                        <option value="2-3">2-3 Harfli</option>
+                        <option value="4">4 Harf </option>
+                        <option value="5" selected>5 Harf</option>
+                        <option value="6">6 Harf</option>
+                        <option value="7">7 Harf</option>
+                    </select>
+                </div>
+                <select id="bot-difficulty-select">
+                    <option value="easy">Kolay</option>
+                    <option value="normal" selected>Normal</option>
+                    <option value="hard">Zor</option>
+                </select>
+                <button id="start-bot-game-btn">Başla</button>
+            </div>
+        </div>
+
+        <!-- Diğer ekranlar... (Aynı kaldı) -->
+        <div id="create-room-screen" class="hidden">
+            <p>Arkadaşının katılması için aşağıdaki kodu paylaş:</p>
+            <div id="room-id-display"></div>
+            <p class="waiting-text">Rakip bekleniyor...</p>
+        </div>
+        <div id="join-room-screen" class="hidden">
+            <p>Arkadaşından aldığın oda kodunu gir:</p>
+            <input type="text" id="room-id-input" maxlength="6" placeholder="Oda Kodu">
+            <button id="submit-join-btn">Katıl</button>
+        </div>
+        <div id="setup-screen" class="hidden">
+            <p>Lütfen 5 harfli bir kelime belirleyin:</p>
+            <input type="text" id="secret-word-input" maxlength="5">
+            <button id="set-word-btn">Kelimeyi Belirle</button>
+        </div>
+        <div id="game-screen" class="hidden">
+            <div id="my-word-display" class="word-display-box">
+                Senin Kelimen: <span></span>
+            </div>
+            <div id="guess-area">
+                <input type="text" id="guess-input" maxlength="5" placeholder="Tahmininiz">
+                <button id="guess-btn">Tahmin Et</button>
+            </div>
+            <div id="history-area">
+                <div class="history-list">
+                    <h3>Tahminlerim</h3>
+                    <ul id="my-guesses"></ul>
+                </div>
+                <div class="history-list">
+                    <h3>Rakibin/Botun Tahminleri</h3>
+                    <ul id="opponent-guesses"></ul>
+                </div>
+            </div>
+        </div>
+        <div id="end-game-screen" class="hidden">
+            <div id="end-game-info"></div>
+            <button id="play-again-btn">Yeni Oyun</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/kelime/client.js"></script>
+</body>
+
+</html>

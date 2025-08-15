@@ -1,0 +1,242 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    padding-top: 80px;
+    box-sizing: border-box;
+}
+
+.global-home-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #6c757d;
+    z-index: 100;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    text-decoration: none;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.global-home-btn:hover {
+    background-color: #5a6268;
+}
+
+#game-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+    margin-top: 0;
+}
+
+h2#game-status {
+    min-height: 24px;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+h3 {
+    margin-top: 0;
+    color: #495057;
+}
+
+.game-mode-box {
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.option-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+    color: #495057;
+}
+
+input[type="number"],
+input[type="text"],
+select {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    margin: 5px;
+}
+
+input[type="number"] {
+    /* Standart özellik (gelecekteki tarayıcılar için) */
+    appearance: none;
+    /* Firefox için standart dışı ama gerekli olan özellik */
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    /* Chrome, Safari, Edge'de okları kaldır */
+    margin: 0;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button.start-btn {
+    background-color: #28a745;
+}
+
+button:disabled {
+    background-color: #adb5bd;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+button.start-btn:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.word-display-box {
+    margin: 10px auto 20px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1.1em;
+    display: inline-block;
+}
+
+.word-display-box span {
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+    background-color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #333;
+}
+
+#history-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.history-list {
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+}
+
+li {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1em;
+}
+
+.result {
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.plus {
+    color: #28a745;
+}
+
+.minus {
+    color: #ffc107;
+}
+
+#room-id-display {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #dc3545;
+    letter-spacing: 2px;
+}
+
+#end-game-screen {
+    margin-top: 20px;
+}
+
+#end-game-info {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#play-again-btn {
+    background-color: #28a745;
+    font-size: 1.2em;
+    margin-top: 15px;
+}
+
+#play-again-btn:hover {
+    background-color: #218838;
+}
+
+@media (max-width: 480px) {
+    .button-group,
+    .option-group {
+        flex-direction: column;
+    }
+    button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayı Bulmaca Oyunu</title>
+    <link rel="stylesheet" href="/sayi/style.css">
+</head>
+
+<body>
+    <a href="/" class="global-home-btn">🏠 Portal</a>
+
+    <div id="game-container">
+        <h1>Sayı Bulmaca Oyunu</h1>
+        <h2 id="game-status">Lütfen bir oyun modu seçin.</h2>
+
+        <!-- Ana Ekran -->
+        <div id="home-screen">
+            <!-- Multiplayer Alanı -->
+            <div class="game-mode-box">
+                <h3><span role="img" aria-label="people icon">👥</span> Arkadaşınla Oyna</h3>
+                <div class="option-group">
+                    <label for="digit-count-select">Basamak Sayısı:</label>
+                    <select id="digit-count-select">
+                        <option value="3">3 Basamak</option>
+                        <option value="4" selected>4 Basamak</option>
+                        <option value="5">5 Basamak</option>
+                        <option value="6">6 Basamak</option>
+                    </select>
+                </div>
+                <div class="button-group">
+                    <button id="create-room-btn">Oda Kur</button>
+                    <button id="join-room-btn">Odaya Katıl</button>
+                </div>
+            </div>
+
+            <!-- Bota Karşı Oyna Alanı -->
+            <div class="game-mode-box">
+                <h3><span role="img" aria-label="robot icon">🤖</span> Bota Karşı Oyna</h3>
+                <div class="option-group">
+                    <label for="bot-digit-count-select">Basamak Sayısı:</label>
+                    <select id="bot-digit-count-select">
+                        <option value="3">3 Basamak</option>
+                        <option value="4" selected>4 Basamak</option>
+                        <option value="5">5 Basamak</option>
+                        <option value="6">6 Basamak</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="bot-difficulty-select">Zorluk:</label>
+                    <select id="bot-difficulty-select">
+                        <option value="easy">Kolay</option>
+                        <option value="normal" selected>Normal</option>
+                    </select>
+                </div>
+                <button id="start-bot-game-btn" class="start-btn">Başla</button>
+            </div>
+        </div>
+
+        <!-- Diğer ekranlar... -->
+        <div id="create-room-screen" class="hidden">
+            <p>Arkadaşının katılması için aşağıdaki kodu paylaş:</p>
+            <div id="room-id-display"></div>
+            <p class="waiting-text">Rakip bekleniyor...</p>
+        </div>
+        <div id="join-room-screen" class="hidden">
+            <p>Arkadaşından aldığın oda kodunu gir:</p>
+            <input type="text" id="room-id-input" maxlength="6" placeholder="Oda Kodu">
+            <button id="submit-join-btn">Katıl</button>
+        </div>
+        <div id="setup-screen" class="hidden">
+            <p>Lütfen 4 basamaklı bir sayı belirleyin:</p>
+            <input type="number" id="secret-number-input" maxlength="4" placeholder="Örn: 1453">
+            <button id="set-number-btn">Sayıyı Belirle</button>
+        </div>
+        <div id="game-screen" class="hidden">
+            <div id="my-number-display" class="word-display-box">
+                Senin Sayın: <span></span>
+            </div>
+            <div id="guess-area">
+                <input type="number" id="guess-input" maxlength="4" placeholder="Tahmininiz">
+                <button id="guess-btn">Tahmin Et</button>
+            </div>
+            <div id="history-area">
+                <div class="history-list">
+                    <h3>Tahminlerim</h3>
+                    <ul id="my-guesses"></ul>
+                </div>
+                <div class="history-list">
+                    <h3>Rakibin/Botun Tahminleri</h3>
+                    <ul id="opponent-guesses"></ul>
+                </div>
+            </div>
+        </div>
+        <div id="end-game-screen" class="hidden">
+            <div id="end-game-info"></div>
+            <button id="play-again-btn">Yeni Oyun</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/sayi/client.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    padding-top: 80px;
+    /* Buton için yer aç */
+    box-sizing: border-box;
+}
+
+.global-home-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #6c757d;
+    z-index: 100;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    text-decoration: none;
+    color: white;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+.global-home-btn:hover {
+    background-color: #5a6268;
+}
+
+#game-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    /* Genişliği kısıtla */
+}
+
+h1,
+h2 {
+    color: #333;
+    margin-top: 0;
+}
+
+h2#game-status {
+    min-height: 24px;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+select,
+button {
+    width: 80%;
+    padding: 12px;
+    font-size: 1.1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    /* Padding'in genişliği etkilememesi için */
+}
+
+input[type="text"] {
+    text-align: center;
+    text-transform: lowercase;
+    /* GİRİLEN HARFLERİ KÜÇÜK GÖSTER */
+}
+
+input::placeholder {
+    text-transform: none;
+    /* Placeholder'ı normal bırak */
+}
+
+button {
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: auto;
+    /* Otomatik genişlik */
+    padding: 12px 25px;
+}
+
+button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.word-display-box {
+    margin: 10px auto 20px auto;
+    padding: 10px;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1.1em;
+    display: inline-block;
+}
+
+.word-display-box span {
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 2px;
+    background-color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #333;
+    text-transform: lowercase;
+    /* Kendi kelimeni de küçük harf göster */
+}
+
+#history-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.history-list {
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+}
+
+.guess-row {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 5px;
+    padding: 5px 0;
+}
+
+.letter-box {
+    width: 45px;
+    height: 45px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    text-transform: lowercase;
+    /* TAHMİN HARFLERİNİ KÜÇÜK GÖSTER */
+}
+
+.letter-box.correct {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.letter-box.misplaced {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.letter-box.absent {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+#room-id-display {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #dc3545;
+}
+
+.word-length-picker {
+    margin-bottom: 20px;
+}
+
+#end-game-screen {
+    margin-top: 20px;
+}
+
+#end-game-info {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#play-again-btn {
+    background-color: #28a745;
+    font-size: 1.2em;
+    margin-top: 15px;
+}
+
+#play-again-btn:hover {
+    background-color: #218838;
+}
+
+
+/* Daha küçük ekranlar için ek ayarlar */
+
+@media (max-width: 400px) {
+    .letter-box {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2em;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+}
